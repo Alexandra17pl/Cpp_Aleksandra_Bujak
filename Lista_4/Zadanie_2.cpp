@@ -1,23 +1,19 @@
-#include "zespolona.h"
+#include <iostream>
+#include "complex.h"
+
+using namespace std;
 
 int main()
 {
-	Zespolona z1(2, 5);
-	Zespolona z2(7, 8);
-	Zespolona z3;
-	std::cin >> z3;
-	
-	std::cout << z1 << '\n';
-	std::cout << z2 << '\n';
-	std::cout << z3 << '\n';
-	
-	Zespolona z12 = z1 + z2;
-	Zespolona z21 = z2 - z1;
-	Zespolona z31 = z3 * z1;
-	Zespolona z32 = z3 / z1;
-	
-	std::cout << z12 << '\n';
-	std::cout << z21 << '\n';
-	std::cout << z31 << '\n';
-	std::cout << z32 << '\n';
+	Complex z1;
+	Complex z2;
+	cin >> z1;
+	cin >> z2;
+	cout << "Liczba zespolona Z1: 564" << z1 << "\n";
+	cout << "Liczba zespolona Z2: " << z2 << "\n";
+	cout << z1 + z2 << "\n";
+	cout << z1 - z2 << "\n";
+	cout << z1 * z2 << "\n";
+	cout << z1 / z2 << "\n";
+	return 0;
 }

@@ -1,49 +1,34 @@
 #include <iostream>
-#include <cmath>
 #include <math.h>
+
+using namespace std;
+
+double archimedes_a(int i)
+{
+	if(i==0)
+		return 1.0/sqrt(3);
+	else
+		return ((sqrt(archimedes_a(i-1.0)*archimedes_a(i-1.0)+1)-1.0)/(archimedes_a(i-1.0)));
+}
+
+double archimedes_b(int i)
+{
+	if(i==0)
+		return 1.0/sqrt(3);
+    else
+		return ((archimedes_b(i-1.0))/((sqrt(archimedes_b(i-1.0)*archimedes_b(i-1.0)+1)+1.0)));
+}
 
 int main()
 {
-    int n=30;
-    double t0=1/(sqrt(3));
-    double P;
-    double ta;
-    double t1;
-    double tb;
-    double t2;
-    std::cout << "Wartosci dla metody (a):\n";
-    for(int i=0; i<=n; i++)
-    {
-		if(i==0)
-		{
-			P=6.0*t0;
-			cout << "\nDla i=0 otrzymujemy: " << P << endl;
-			ta=t0;
-		}
-		else
-		{
-			t1=(sqrt((ta*ta)+1)-1)/(ta);
-			P=6.0*pow(2.0,i)*t1;
-			cout << "Dla i=" << i << " otrzymujemy: " << P << endl;
-			ta=t1;
-		}
+	double wynik_1,wynik_2;
+	wynik_1=wynik_2=0.0;
+	cout << "Format wyniku: " << endl;
+	cout << "i|Podpunkt a|Błąd[%]|Podpunkt b|Błąd[%]" << endl;
+	for(int i=0; i<=15; i++)
+	{
+		wynik_1 = 6  *pow(2,i) * archimedes_a(i);
+		wynik_2 = 6 * pow(2,i) * archimedes_b(i);
+		cout << i << "|" << wynik_1<<"|" << (abs(M_PI-wynik_1)/M_PI)*100 << "|"<<wynik_2 << "|" << (abs(M_PI-wynik_2)/M_PI)*100 << endl;
 	}
-    cout << "\nWartosci dla metody (b):\n";
-    for(int i=0; i<=n; i++)
-    {
-		if(i==0)
-        {
-			P=6.0*t0;
-			cout << "\nDla i=0 otrzymujemy: " << P << "\n";
-			tb=t0;
-		}
-        else
-        {
-			t2=tb/(sqrt((tb*tb)+1)+1);
-			P=6.0*pow(2.0,i)*t1;
-			cout << "Dla i=" << i << " otrzymujemy: " << P << "\n";
-			tb=t2;
-		}
-	}
-    return 0;
 }

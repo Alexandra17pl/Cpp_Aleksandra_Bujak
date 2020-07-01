@@ -3,9 +3,11 @@
 #include <vector>
 #include <exception>
 
+using namespace std;
+
 double suma(double (*f)(int) , int m , double &eps)
 {
-	static std::vector<double> v(m);
+	static vector<double> v(m);
 	double sub_total = 0.0;
 	double tmp_sum=0.0;
 	double s=0.0;
@@ -38,7 +40,6 @@ double f_1(int n)
 	double x = static_cast<double> (n);
     if (n > 1)
 		return (n % 2 == 0) ? 1.0/log(x) : -1.0/log(x);
-	throw "Argument musi byc wiekszy od 0";
 }
 
 double f_2(int n)

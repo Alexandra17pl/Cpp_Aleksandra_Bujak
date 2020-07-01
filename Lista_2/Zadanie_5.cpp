@@ -5,22 +5,22 @@
 
 using namespace std;
 
-int fibo1(int n)
+int fibo_1(int n)
 {
 	if (n == 0)
 		return 0;
 	if (n == 1)
 		return 1;
 	else
-		return fibo1(n-1) + fibo1(n-2);
+		return fibo_1(n-1) + fibo_1(n-2);
 }
 
-int fibo2(int n)
+int fibo_2(int n)
 {
-	return round(1.0/sqrt(5.0) * ( pow( (1.0+sqrt(5.0))/2.0 , (double)(n) ) - pow( (1.0-sqrt(5.0))/2.0 , (double)(n) ) ));
+	return round(1.0/sqrt(5.0) * ( pow( (1.0+sqrt(5.0))/2.0 , (double)(n) ) - pow( (1.0-sqrt(5.0))/2.0 , (double)(n))));
 }
 
-int fibo3(int n)
+int fibo_3(int n)
 {
 	static vector<int> v={1,1};
 	if (n <= v.size())
@@ -40,18 +40,18 @@ int main()
     start=clock();
     for(int i=1;i<=48;i++)
     {
-		cout << fibo1(i) << ",";
+		cout << fibo_1(i) << ",";
 	}
     stop=clock();
     time=(stop-start)/(double)(CLOCKS_PER_SEC);
-    cout<<"\nCzas wykonania: "<< time << " ms" << endl;
+    cout << "\nCzas wykonania: "<< time << " ms" << endl;
     
     clock_t start_2,stop_2;
     cout << "Podpunkt b)" << endl;
     start_2=clock();
     for(int i=1;i<=48;i++)
     {
-		cout << fibo2(i) << ",";
+		cout << fibo_2(i) << ",";
 	}
     stop_2=clock();
     time=(stop_2-start_2)/(double)(CLOCKS_PER_SEC);
@@ -62,7 +62,7 @@ int main()
     start_3=clock();
     for(int i = 1; i <= 48; i++)
     {
-		cout << fibo3(i) << ", ";
+		cout << fibo_3(i) << ", ";
 	}
     stop_3=clock();
     time=(stop_3-start_3)/(double)(CLOCKS_PER_SEC);
